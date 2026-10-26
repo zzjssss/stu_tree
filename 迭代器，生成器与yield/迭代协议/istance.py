@@ -1,4 +1,31 @@
+# 举例迭代对象
+class CountdownIterator:
+    def __init__(self, start):
+        self.current = start  # 接收传入的start，保存当前值
 
+    # 迭代器必须实现 __iter__
+    def __iter__(self):
+        return self
+
+    # 迭代器必须实现 __next__
+    def __next__(self):
+        if self.current < 0:
+            raise StopIteration  # 迭代结束标记
+        val = self.current
+        self.current -= 1
+        return val
+
+class Countdown:
+    def __init__(self, start):
+        self.start = start
+    def __iter__(self):
+        return CountdownIterator(self.start) # 每次全新迭代器
+            # CountdownIterator是一个迭代器
+"""    
+
+
+"""
+#这些是迭代器
 class Fib:
     def __init__(self, max):
         self.max = max
